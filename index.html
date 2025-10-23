@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCool - Farmer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Temporary/Quick styles specific to the dashboard, will be moved to a dedicated CSS file later */
+        .dashboard-main {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .metric-card h3 {
+            color: #555;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .metric-card p {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .listing-section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .listing-section h2 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .listing-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .listing-form input[type="text"],
+        .listing-form input[type="number"],
+        .listing-form select,
+        .listing-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .listing-form button {
+            margin-top: 25px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .listing-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🧑‍🌾 Farmer Dashboard</h1>
+        <nav>
+            <a href="index.html">Marketplace</a>
+            <a href="#">My Orders</a>
+            <a href="#">Payments</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="overview-section">
+            <h2>Welcome Back, [Farmer Name]</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Total Sales (This Month)</h3>
+                    <p id="total-sales">Ksh 0.00</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Pending Deliveries</h3>
+                    <p id="pending-deliveries">0</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Items Listed Today</h3>
+                    <p id="listed-items">0</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Next Payment Date</h3>
+                    <p id="next-payment">N/A</p>
+                </div>
+            </div>
+
+            <div class="listing-section">
+                <h2>List New Produce</h2>
+                <form class="listing-form" id="new-product-form">
+                    <label for="product-name">Produce Name</label>
+                    <input type="text" id="product-name" required placeholder="e.g., Organic Avocados">
+                    
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Vegetables">Vegetables</option>
+                        <option value="Fruits">Fruits</option>
+                        <option value="Grains">Grains</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="quantity">Quantity Available (kg)</label>
+                    <input type="number" id="quantity" required min="1" placeholder="e.g., 200">
+
+                    <label for="price">Price Per Unit (Ksh)</label>
+                    <input type="number" id="price" required min="1" placeholder="e.g., 50.00">
+                    
+                    <label for="unit">Unit Type</label>
+                    <input type="text" id="unit" required placeholder="e.g., per Kg or per Crate (10Kg)">
+
+                    <label for="description">Product Description (Quality, growing method, etc.)</label>
+                    <textarea id="description" rows="3" placeholder="Grown using rain-fed methods, ready for harvest next Tuesday."></textarea>
+                    
+                    <label for="image-upload">Upload Photo</label>
+                    <input type="file" id="image-upload" accept="image/*" required>
+
+                    <button type="submit">Publish Listing</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AgriCool. Empowering Kenyan Farmers.</p>
+    </footer>
+
+    <script src="dashboard_script.js"></script>
+</body>
+</html>
